@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
-import Board from "../components/Board";
-
-const socket = io("http://localhost:3000");
+import socket from "../socket";
+import Board from "../Components/Board";
+import {useNavigate} from "react-router"
 
 const lines = [
   [0,1,2],[3,4,5],[6,7,8],
@@ -25,6 +24,7 @@ export default function Game({ playerName, opponentName, symbol }) {
   const [isDraw, setIsDraw] = useState(false);
   const [currentTurn, setCurrentTurn] = useState("X");
   const [opponentDisconnected, setOpponentDisconnected] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Tell server this player joined
@@ -164,6 +164,9 @@ export default function Game({ playerName, opponentName, symbol }) {
           ].join(" ")}
         >
           Reset Game
+        </button>
+        <button onClick={navigate('/lobby')}>
+          Lobby
         </button>
       </div>
     </div>

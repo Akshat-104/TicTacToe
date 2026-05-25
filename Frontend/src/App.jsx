@@ -4,6 +4,7 @@ import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import Lobby from "./Pages/Lobby";
 import Game from "./Pages/Game";
+import History from "./Pages/History";
 
 export default function App() {
   const [playerName, setPlayerName] = useState(() => {
@@ -60,6 +61,16 @@ export default function App() {
                 symbol={symbol}
                 handleLogout={handleLogout}
               />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            isAuthenticated ? (
+              <History playerName={playerName} handleLogout={handleLogout} />
             ) : (
               <Navigate to="/login" />
             )

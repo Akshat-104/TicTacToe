@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { io } from "socket.io-client";
-
-const socket = io("http://localhost:3000");
+import socket from "../socket";
 
 export default function Lobby({ setOpponentName, setSymbol, playerName, handleLogout }) {
   const [status, setStatus] = useState("Waiting to search...");
@@ -58,6 +56,12 @@ export default function Lobby({ setOpponentName, setSymbol, playerName, handleLo
           className="w-full py-2 bg-amber-500 text-white font-bold rounded-lg hover:bg-amber-600 hover:shadow-[0_0_10px_rgba(245,158,11,0.8)] transition"
         >
           Search Opponent
+        </button>
+        <button
+          onClick={() => navigate("/history")}
+          className="w-full mt-4 py-2 bg-slate-700 text-white font-bold rounded-lg hover:bg-slate-600 transition"
+        >
+          View Game History
         </button>
         <p className="mt-6 text-center text-slate-400 italic">{status}</p>
         <div className="flex justify-center">

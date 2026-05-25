@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Login({ setPlayerName }) {
+export default function Login({ setPlayerName, setToken }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ export default function Login({ setPlayerName }) {
 
       if (res.ok) {
         setPlayerName(name);
+        setToken(data.token);
         localStorage.setItem("playerName", name); // store only safe info
         localStorage.setItem("token", data.token); // 👈 store JWT
         navigate("/lobby");
