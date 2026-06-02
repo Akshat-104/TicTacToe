@@ -11,11 +11,11 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 const server = createServer(app);
-const io = new Server(server, { cors: { origin: "http://localhost:5173" } });
+const io = new Server(server, { cors: { origin: "https://tictac0102.netlify.app" } });
 const prisma = new PrismaClient();
 
 // Middleware
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://tictac0102.netlify.app" }));
 app.use(express.json());
 
 // JWT secret
