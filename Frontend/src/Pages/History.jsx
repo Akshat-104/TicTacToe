@@ -33,7 +33,7 @@ export default function History({ playerName, handleLogout }) {
   useEffect(() => {
     async function fetchGames() {
       try {
-        const res = await fetch("http://localhost:3000/api/games", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/games`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

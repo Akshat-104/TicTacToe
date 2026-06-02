@@ -35,7 +35,7 @@ export default function Game({ playerName, opponentName, symbol }) {
       console.log("Resuming game:", gameId);
 
       try {
-        const res = await fetch(`http://localhost:3000/api/games/${gameId}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/games/${gameId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`, // JWT if used
           },
